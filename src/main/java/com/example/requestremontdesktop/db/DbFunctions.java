@@ -23,23 +23,6 @@ public class DbFunctions {
         return connection;
     }
 
-    public int check_login(String login) {
-        try {
-            String query = String.format("select * from users where login='%s'", login);
-            Statement statement;
-            statement = connect_to_db().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            ResultSet resultSet = statement.executeQuery(query);
-            resultSet.last();
-            if (resultSet.getRow() >= 1) {
-                return 0;
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            return 404;
-        }
-        return 201;
-    }
-
     public int loginUser(String login, String password) {
         try {
             String query = String.format("select * from users where login='%s' and password='%s'", login, password);
@@ -66,14 +49,15 @@ public class DbFunctions {
         ObservableList<Request> requests = FXCollections.observableArrayList();
         try {
             ResultSet resultSet = connect_to_db().createStatement().executeQuery("SELECT requests.id, requests.date_update, equipments.name as equipment_name, type_of_malfunctions.name as type_of_malfunction_name, \n" +
-                    "requests.description_of_problem, users.last_name as user_last_name, prioritets.name as prioritet_name, \n" +
+                    "requests.description_of_problem, users.last_name as user_last_name, executors.last_name as executor_last_name, prioritets.name as prioritet_name, \n" +
                     "statuses_request.name as statuses_request_name\n" +
-                    "FROM requests, equipments, type_of_malfunctions, users, prioritets, statuses_request\n" +
+                    "FROM requests, equipments, type_of_malfunctions, users, prioritets, statuses_request, executors\n" +
                     "WHERE requests.equipment_id = equipments.id\n" +
                     "AND requests.type_of_malfunction_id = type_of_malfunctions.id\n" +
                     "AND requests.user_id = users.id\n" +
                     "AND requests.prioritet_id = prioritets.id\n" +
-                    "AND requests.status_request_id = statuses_request.id");
+                    "AND requests.status_request_id = statuses_request.id\n" +
+                    "AND requests.executor_id = executors.id");
             while (resultSet.next()) {
                 requests.add(new Request(
                         resultSet.getString("id"),
@@ -82,6 +66,7 @@ public class DbFunctions {
                         resultSet.getString("type_of_malfunction_name"),
                         resultSet.getString("description_of_problem"),
                         resultSet.getString("user_last_name"),
+                        resultSet.getString("executor_last_name"),
                         resultSet.getString("prioritet_name"),
                         resultSet.getString("statuses_request_name")
                 ));

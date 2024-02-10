@@ -1,15 +1,16 @@
 package com.example.requestremontdesktop.models;
 
 public class Request {
-    String id, date_update, equipment_name, type_of_malfunction_name, description_of_problem, user_last_name, prioritet_name, statuses_request_name;
+    String id, date_update, equipment_name, type_of_malfunction_name, description_of_problem, user_last_name, executor_last_name, prioritet_name, statuses_request_name;
 
-    public Request(String id, String date_update, String equipment_name, String type_of_malfunction_name, String description_of_problem, String user_last_name, String prioritet_name, String statuses_request_name) {
+    public Request(String id, String date_update, String equipment_name, String type_of_malfunction_name, String description_of_problem, String user_last_name, String executor_last_name, String prioritet_name, String statuses_request_name) {
         this.id = id;
         this.date_update = date_update;
         this.equipment_name = equipment_name;
         this.type_of_malfunction_name = type_of_malfunction_name;
         this.description_of_problem = description_of_problem;
         this.user_last_name = user_last_name;
+        this.executor_last_name = executor_last_name;
         this.prioritet_name = prioritet_name;
         this.statuses_request_name = statuses_request_name;
     }
@@ -60,6 +61,14 @@ public class Request {
 
     public void setUser_last_name(String user_last_name) {
         this.user_last_name = user_last_name;
+    }
+
+    public String getExecutor_last_name() {
+        return executor_last_name;
+    }
+
+    public void setExecutor_last_name(String executor_last_name) {
+        this.executor_last_name = executor_last_name;
     }
 
     public String getPrioritet_name() {

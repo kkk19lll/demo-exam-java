@@ -87,6 +87,12 @@ CREATE TABLE equipments (
 	FOREIGN KEY (status_of_equipment_id) REFERENCES statuses_equipment(id),
 	FOREIGN KEY (remont_id) REFERENCES remonts(id)
 );
+CREATE TABLE executors (
+	id int primary key generated always as identity,
+	last_name varchar(1000),
+	first_name varchar(1000),
+	middle_name varchar(1000)
+);
 CREATE TABLE requests (
 	id int primary key generated always as identity,
 	date_update date,
@@ -94,11 +100,13 @@ CREATE TABLE requests (
 	type_of_malfunction_id int,
 	description_of_problem varchar(1000),
 	user_id int,
+	executor_id int,
 	prioritet_id int,
 	status_request_id int,
 	FOREIGN KEY (equipment_id) REFERENCES equipments(id),
 	FOREIGN KEY (type_of_malfunction_id) REFERENCES type_of_malfunctions(id),
 	FOREIGN KEY (user_id) REFERENCES users(id),
+	FOREIGN KEY (executor_id) REFERENCES executors(id),
 	FOREIGN KEY (prioritet_id) REFERENCES prioritets(id),
 	FOREIGN KEY (status_request_id) REFERENCES statuses_request(id)
 );

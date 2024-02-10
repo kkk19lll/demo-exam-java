@@ -10,21 +10,19 @@ import com.example.requestremontdesktop.models.SceneModel;
 import com.example.requestremontdesktop.models.StageModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MainClientController {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private AnchorPane anchorPane;
@@ -51,7 +49,13 @@ public class MainClientController {
     private TableColumn<?, ?> equipmentColumnRequests;
 
     @FXML
+    private TableColumn<?, ?> executorColumnRequests;
+
+    @FXML
     private TableColumn<?, ?> idColumnRequests;
+
+    @FXML
+    private ImageView imageBtnAddRequest;
 
     @FXML
     private TableColumn<?, ?> prioritetColumnRequests;
@@ -89,6 +93,19 @@ public class MainClientController {
         btnRequests.setOnAction(e -> {
             anchorPaneRequests.setVisible(true);
         });
+        imageBtnAddRequest.setOnMouseClicked(e -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/requestremontdesktop/add-request-view.fxml"));
+                Parent parent = loader.load();
+                Stage stage = new Stage();
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setScene(new Scene(parent));
+                stage.setTitle("Добавление заявки");
+                stage.showAndWait();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
         installTableViewRequests();
     }
 
@@ -99,6 +116,7 @@ public class MainClientController {
         typeOfMalfunctionsColumnRequests.setCellValueFactory(new PropertyValueFactory<>("type_of_malfunction_name"));
         descriptionOfProblemCOlumnRequests.setCellValueFactory(new PropertyValueFactory<>("description_of_problem"));
         clientColumnRequests.setCellValueFactory(new PropertyValueFactory<>("user_last_name"));
+        executorColumnRequests.setCellValueFactory(new PropertyValueFactory<>("executor_last_name"));
         prioritetColumnRequests.setCellValueFactory(new PropertyValueFactory<>("prioritet_name"));
         statusColumnRequests.setCellValueFactory(new PropertyValueFactory<>("statuses_request_name"));
 
