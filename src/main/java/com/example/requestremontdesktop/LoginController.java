@@ -133,7 +133,7 @@ public class LoginController {
                 Stage stage = new Stage();
                 StageModel.setMyStage(stage);
                 FXMLLoader fxmlLoader = new FXMLLoader(RequestRemontApplication.class.getResource("main-client-view.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(), 893, 400);
+                Scene scene = new Scene(fxmlLoader.load(), 1064, 400);
                 SceneModel.setMyScene(scene);
                 stage.setTitle("Главное меню");
                 stage.setScene(scene);
@@ -144,7 +144,7 @@ public class LoginController {
                 Stage stage = new Stage();
                 StageModel.setMyStage(stage);
                 FXMLLoader fxmlLoader = new FXMLLoader(RequestRemontApplication.class.getResource("main-executor-view.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(), 893, 400);
+                Scene scene = new Scene(fxmlLoader.load(), 1064, 400);
                 SceneModel.setMyScene(scene);
                 stage.setTitle("Главное меню");
                 stage.setScene(scene);
@@ -156,7 +156,7 @@ public class LoginController {
                 Stage stage = new Stage();
                 StageModel.setMyStage(stage);
                 FXMLLoader fxmlLoader = new FXMLLoader(RequestRemontApplication.class.getResource("main-employee-view.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(), 893, 400);
+                Scene scene = new Scene(fxmlLoader.load(), 1064, 400);
                 SceneModel.setMyScene(scene);
                 stage.setTitle("Главное меню");
                 stage.setScene(scene);
@@ -169,7 +169,7 @@ public class LoginController {
                 Stage stage = new Stage();
                 StageModel.setMyStage(stage);
                 FXMLLoader fxmlLoader = new FXMLLoader(RequestRemontApplication.class.getResource("main-admin-view.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(), 893, 400);
+                Scene scene = new Scene(fxmlLoader.load(), 1064, 400);
                 SceneModel.setMyScene(scene);
                 stage.setTitle("Панель администрирования");
                 stage.setScene(scene);

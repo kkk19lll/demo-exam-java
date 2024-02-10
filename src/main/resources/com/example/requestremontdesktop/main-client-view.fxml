@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="893.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.requestremontdesktop.MainClientController">
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="1064.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.requestremontdesktop.MainClientController">
    <children>
       <Pane prefHeight="400.0" prefWidth="160.0" style="-fx-background-color: #a67120;">
          <children>
@@ -22,9 +24,9 @@
             <Button fx:id="btnExit" layoutY="109.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #a67120; -fx-text-fill: #fff;" text="Выход" />
          </children>
       </Pane>
-      <AnchorPane fx:id="anchorPaneRequests" layoutX="160.0" prefHeight="400.0" prefWidth="825.0">
+      <AnchorPane fx:id="anchorPaneRequests" layoutX="160.0" prefHeight="400.0" prefWidth="904.0">
          <children>
-            <TableView fx:id="tableViewRequests" layoutY="62.0" prefHeight="334.0" prefWidth="826.0">
+            <TableView fx:id="tableViewRequests" layoutY="62.0" prefHeight="334.0" prefWidth="904.0">
               <columns>
                 <TableColumn fx:id="idColumnRequests" prefWidth="40.79998779296875" text="id" />
                 <TableColumn fx:id="dateUpdateColumnRequests" prefWidth="119.99998474121094" text="Дата добавления" />
@@ -32,8 +34,9 @@
                   <TableColumn fx:id="typeOfMalfunctionsColumnRequests" prefWidth="137.5999755859375" text="Тип неисправности" />
                   <TableColumn fx:id="descriptionOfProblemCOlumnRequests" prefWidth="143.20001220703125" text="Описание проблемы" />
                   <TableColumn fx:id="clientColumnRequests" prefWidth="76.800048828125" text="Клиент" />
-                  <TableColumn fx:id="prioritetColumnRequests" prefWidth="96.7999267578125" text="Приоритет" />
-                  <TableColumn fx:id="statusColumnRequests" prefWidth="108.0" text="Статус" />
+                  <TableColumn fx:id="executorColumnRequests" prefWidth="100.0" text="Исполнитель" />
+                  <TableColumn fx:id="prioritetColumnRequests" prefWidth="75.0" text="Приоритет" />
+                  <TableColumn fx:id="statusColumnRequests" prefWidth="87.0" text="Статус" />
               </columns>
             </TableView>
             <Text fill="#a67120" layoutX="393.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Заявки">
@@ -41,6 +44,14 @@
                   <Font name="Comic Sans MS" size="21.0" />
                </font>
             </Text>
+            <ImageView fx:id="imageBtnAddRequest" fitHeight="36.0" fitWidth="31.0" layoutX="859.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../icons/post.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
